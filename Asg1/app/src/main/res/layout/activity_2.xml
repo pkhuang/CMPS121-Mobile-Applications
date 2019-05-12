@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8FA37A"
+    tools:context=".Activity2">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hobby1title"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/desc1"
+        android:layout_width="337dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="TODO"
+        android:text="@string/act2desc"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title1" />
+
+    <ImageView
+        android:id="@+id/image_backpacking"
+        android:layout_width="343dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc1"
+        app:srcCompat="@drawable/hobby1" />
+
+    <Button
+        android:id="@+id/OK_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:text="@string/OK"
+        app:layout_constraintStart_toStartOf="@+id/desc1"
+        app:layout_constraintTop_toBottomOf="@+id/image_backpacking" />
+
+    <Button
+        android:id="@+id/delete_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#A72F2F"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="@+id/desc1"
+        app:layout_constraintTop_toBottomOf="@+id/image_backpacking" />
+</android.support.constraint.ConstraintLayout>

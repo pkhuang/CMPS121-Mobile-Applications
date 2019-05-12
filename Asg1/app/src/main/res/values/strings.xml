@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Asg1</string>
+    <string name="OK">"OK"</string>
+    <string name="delete">"Delete"</string>
+
+    <!-- MainActivity -->
+    <string name="name">"Peter Huang"</string>
+    <string name="bio">"I'm a 5th year CS major and I have a wide range of hobbies that generally "
+        "don't require me to move. However, I really enjoy backpacking and practicing martial arts "
+        "when I make the time. When I don't, it's always nice to sit back and chill with friends "
+        "on whatever game we end up playing. After I graduate, I'm hoping to apply my skills in the "
+        "gaming / entertainment industry since that's always been a dream of mine."
+    </string>
+
+    <string name="hobby1title">"Backpacking"</string>
+    <string name="hobby2title">"Martial Arts"</string>
+    <string name="hobby3title">"Games"</string>
+    <string name="exit">"Exit"</string>
+
+    <!-- Activity2 -->
+    <string name="act2desc">"This is the newest hobby I've picked up. I've always enjoyed the "
+        "outdoors, but my parents weren't really outdoors people so I didn't have too many "
+        "opportunities to go camping when I was younger. I haven't been on any trips longer than a "
+        "few days but I plan on hitting Yellowstone in the Summer after I graduate. The attached "
+        "photo is from September last year in Big Basin."</string>
+
+    <!-- Activity3 -->
+    <string name="act3desc">"I love fighting. To me, it's more than letting off steam; it's so"
+        "different from the daily routines in my life that it let's me take a step back for a second "
+        "to reevaluate my mental state. Sometimes it's hard to find the motivation to get out of bed "
+        "and go about my day, but when I'm beyond exhausted and my back is against the wall, I'm "
+        "reminded that I don't quit that easy. Everybody has a much stronger will than they think, "
+        "and practicing martial arts can bring it to the surface in anyone. It's also just crazy fun "
+        "to try ridiculous things and test my limits."</string>
+
+    <!-- Activity4 -->
+    <string name="act4desc">"Playing games with my friends is the most accessible way I spend my "
+        "free time. I enjoyed RPGs like Pokemon, Golden Sun, and Runescape growing up because "
+        "exploring different worlds has always been cool to me. The people I've met through games "
+        "are the biggest part of why I enjoy the experience. Without them, games wouldn't be half "
+        "the fun. Recently I've been kind of busy so I just play Pokemon Go between classes. Here's "
+        "a picture of me updating a game because I haven't gotten to play anything in a while."
+    </string>
+
+</resources>

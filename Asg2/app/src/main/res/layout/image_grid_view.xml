@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- custom grid view layout -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- maybe get rid of srcCompat-->
+    <ImageView
+        android:id="@+id/img_downloaded"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_downloaded"
+        android:layout_alignLeft="@+id/img_downloaded"
+        android:layout_alignRight="@+id/img_downloaded"
+        android:text="Title"
+        android:textAlignment="center"
+        android:textSize="17sp" />
+
+
+</RelativeLayout>

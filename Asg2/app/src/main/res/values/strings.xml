@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Asg2</string>
+    <string name="title_download">Download Image</string>
+    <string name="dl_prompt1">Image URL:</string>
+    <string name="dl_prompt2">Image title:</string>
+    <string name="download">Download</string>
+    <string name="delete">Delete</string>
+    <string name="title_delete">Delete Image</string>
+    <string name="promptID">Enter ID:</string>
+    <string name="promptTitle">Enter Title:</string>
+    <string name="OK">OK</string>
+    <string name="view">View</string>
+    <string name="view_range">Range</string>
+
+</resources>

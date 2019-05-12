@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Delete">
+
+    <TextView
+        android:id="@+id/delete_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/title_delete"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/promptID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/promptID"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteID"
+        app:layout_constraintEnd_toStartOf="@+id/deleteID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/deleteID" />
+
+    <TextView
+        android:id="@+id/promptTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/promptTitle"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteTitle"
+        app:layout_constraintEnd_toStartOf="@+id/deleteTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/deleteTitle" />
+
+    <EditText
+        android:id="@+id/deleteID"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delete_prompt" />
+
+    <EditText
+        android:id="@+id/deleteTitle"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteID" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/OK"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteTitle" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="or "
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/promptTitle"
+        app:layout_constraintEnd_toEndOf="@+id/promptTitle"
+        app:layout_constraintStart_toStartOf="@+id/promptTitle"
+        app:layout_constraintTop_toBottomOf="@+id/promptID" />
+
+</android.support.constraint.ConstraintLayout>
