@@ -44,11 +44,12 @@ public class ViewRange extends AppCompatActivity {
                 int id_max = Integer.parseInt(id_max_string);
 
                 // move through specified range of data and fill GridView
-//                Cursor cursor = db.getData("SELECT * FROM " + TABLE_NAME + " WHERE _id BETWEEN " +
-//                        id_min + " AND " + id_max);
+                Cursor cursor = db.getData("SELECT * FROM " + TABLE_NAME + " WHERE _id BETWEEN " +
+                        id_min + " AND " + id_max);
 
-                Cursor cursor = db.getData(("SELECT * FROM " + TABLE_NAME)); // test
                 list.clear();
+
+                // set up a counter or something for the toast in case of out of range
                 while(cursor.moveToNext()) {
                     int id = cursor.getInt(0);
                     String title = cursor.getString(1);
@@ -56,6 +57,8 @@ public class ViewRange extends AppCompatActivity {
 
                     list.add(new DownloadedImage(id, title, image));
                 }
+
+                // handle out of range
                 adapter.notifyDataSetChanged(); // update grid
             }
         });

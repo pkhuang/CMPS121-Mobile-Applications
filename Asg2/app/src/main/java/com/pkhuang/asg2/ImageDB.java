@@ -68,15 +68,43 @@ public class ImageDB extends SQLiteOpenHelper {
     }
 
     // delete row from table
-    public  void deleteData(int id, String title) {
+//    public  void deleteData(int id, String title) {
+//        SQLiteDatabase db = getWritableDatabase();
+//        String sql = "DELETE FROM " + TABLE_NAME + " WHERE _id = ? OR TITLE = ?";
+//
+//        SQLiteStatement statement = db.compileStatement(sql);
+//        statement.clearBindings();
+//
+//        statement.bindDouble(1, (double)id);
+//        statement.bindString(2, title);
+//
+//        statement.execute();
+//        db.close();
+//    }
+
+    // delete row from table by ID
+    public  void deleteDataById(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "DELETE FROM " + TABLE_NAME + " WHERE _id = ? OR TITLE = ?";
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE _id = ?";
 
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindDouble(1, (double)id);
-        statement.bindString(2, title);
+
+        statement.execute();
+        db.close();
+    }
+
+    // delete row from table by title
+    public  void deleteDataByTitle(String title) {
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE TITLE = ?";
+
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, title);
 
         statement.execute();
         db.close();
