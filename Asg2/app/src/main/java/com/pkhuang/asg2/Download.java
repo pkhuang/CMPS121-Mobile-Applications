@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Download extends AppCompatActivity {
 
-    ImageDB db = ImageDB.getInstance(this);
+    ImageDB db;
     EditText editURL;
     EditText editTitle;
     Button btnDownload;
@@ -33,6 +33,7 @@ public class Download extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
+        db = ImageDB.getInstance(this);
 
         init();
 
@@ -42,7 +43,7 @@ public class Download extends AppCompatActivity {
             public void onClick(View view) {
 
                 // download image from url
-                urlToBitmap inputtedURL = new urlToBitmap();
+                UrlToBitmap inputtedURL = new UrlToBitmap();
                 String img_URL = editURL.getText().toString().trim();
                 Bitmap img_bitmap;
 
@@ -63,6 +64,10 @@ public class Download extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } catch (NullPointerException e) {
+                    // happens if no connection
+                    Toast.makeText(Download.this, "Check network connection.",
+                            Toast.LENGTH_SHORT).show();
                 }
 
                 // return to MainActivity
@@ -83,7 +88,7 @@ public class Download extends AppCompatActivity {
     }
 
     // returns image bitmap from URL
-    public class urlToBitmap extends AsyncTask<String, Void, Bitmap> {
+    public class UrlToBitmap extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected Bitmap doInBackground(String... strings) {

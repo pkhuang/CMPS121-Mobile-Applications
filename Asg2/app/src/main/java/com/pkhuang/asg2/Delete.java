@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class Delete extends AppCompatActivity {
 
-    ImageDB db = ImageDB.getInstance(this);
+    ImageDB db;
     EditText deleteID;
     EditText deleteTitle;
     Button btn_delete;
@@ -19,9 +19,11 @@ public class Delete extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
+        db = ImageDB.getInstance(this);
 
         init();
 
+        // attack click listener to OK button
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,15 +33,7 @@ public class Delete extends AppCompatActivity {
                 int id_to_delete = Integer.parseInt(id_string);
                 String title_to_delete = deleteTitle.getText().toString().trim();
 
-                // check if data exists. if so, delete. this is where you left off
-//                Cursor cursor = db.getData("SELECT id, title FROM DOWNLOADS");
-//                while(cursor.moveToNext()) {
-//                    int id = cursor.getInt(0);
-//                    String title = cursor.getString(1);
-
-                    db.deleteData(id_to_delete, title_to_delete);
-
-//                }
+                db.deleteData(id_to_delete, title_to_delete);
 
                 // reset EditText fields
                 deleteID.setText("");

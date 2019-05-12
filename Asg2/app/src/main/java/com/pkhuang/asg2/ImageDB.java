@@ -52,12 +52,6 @@ public class ImageDB extends SQLiteOpenHelper {
         return sInstance;
     }
 
-//    // sets up db if not already set up
-//    public void queryData(String sql) {
-//        sqldb = getWritableDatabase();
-//        sqldb.execSQL(sql);
-//    }
-
     // insert row into table
     public void insertData(String title, byte[] image){
         SQLiteDatabase db = getWritableDatabase();
@@ -76,7 +70,7 @@ public class ImageDB extends SQLiteOpenHelper {
     // delete row from table
     public  void deleteData(int id, String title) {
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "DELETE FROM " + TABLE_NAME + " WHERE id = ? OR title = ?";
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE _id = ? OR TITLE = ?";
 
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();

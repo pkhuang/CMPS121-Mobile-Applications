@@ -9,7 +9,7 @@
     <string name="promptID">Enter ID:</string>
     <string name="promptTitle">Enter Title:</string>
     <string name="OK">OK</string>
-    <string name="view">View</string>
-    <string name="view_range">Range</string>
+    <string name="view">View All</string>
+    <string name="view_range">View by Range</string>
 
 </resources>

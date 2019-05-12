@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class ViewList extends AppCompatActivity {
 
-    ImageDB db = ImageDB.getInstance(this);
+    ImageDB db;
     GridView gridView;
     ArrayList<DownloadedImage> list;
     ImageListAdapter adapter = null;
@@ -21,6 +21,7 @@ public class ViewList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        db = ImageDB.getInstance(this);
 
         gridView = findViewById(R.id.grid_view);
         list = new ArrayList<>();
