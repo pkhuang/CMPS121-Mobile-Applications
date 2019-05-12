@@ -33,7 +33,6 @@ public class Download extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
-        db = ImageDB.getInstance(this);
 
         init();
 
@@ -127,6 +126,7 @@ public class Download extends AppCompatActivity {
     }
 
     private void init() {
+        db = ImageDB.getInstance(this);
         editURL = findViewById(R.id.editTextURL);
         editTitle = findViewById(R.id.editTextTitle);
         btnDownload = findViewById(R.id.btn_download);

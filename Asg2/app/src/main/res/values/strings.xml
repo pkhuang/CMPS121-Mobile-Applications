@@ -11,5 +11,8 @@
     <string name="OK">OK</string>
     <string name="view">View All</string>
     <string name="view_range">View by Range</string>
+    <string name="promptMin">Enter min ID:</string>
+    <string name="promptMax">Enter max ID:</string>
+    <string name="btn_display">Display</string>
 
 </resources>

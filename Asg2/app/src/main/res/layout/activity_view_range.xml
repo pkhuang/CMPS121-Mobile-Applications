@@ -12,11 +12,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/view_range"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/promptMin"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/promptMin"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_view_range" />
+
+    <TextView
+        android:id="@+id/promptMax"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/promptMax"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/editMax"
+        app:layout_constraintTop_toBottomOf="@+id/title_view_range" />
+
+    <EditText
+        android:id="@+id/editMin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/promptMin"
+        app:layout_constraintTop_toTopOf="@+id/promptMin" />
+
+    <EditText
+        android:id="@+id/editMax"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="40dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/promptMax" />
+
+    <Button
+        android:id="@+id/btn_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/btn_display"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editMin" />
+
+    <GridView
+        android:id="@+id/grid_view2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:columnWidth="150dp"
+        android:gravity="center"
+        android:numColumns="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_display" />
+
 </android.support.constraint.ConstraintLayout>

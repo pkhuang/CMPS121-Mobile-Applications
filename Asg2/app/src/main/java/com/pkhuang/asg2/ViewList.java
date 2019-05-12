@@ -7,6 +7,8 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
+import static com.pkhuang.asg2.ImageDB.TABLE_NAME;
+
 /**
  * Displays the data from db in a GridView
  */
@@ -21,15 +23,11 @@ public class ViewList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
-        db = ImageDB.getInstance(this);
 
-        gridView = findViewById(R.id.grid_view);
-        list = new ArrayList<>();
-        adapter = new ImageListAdapter(this, R.layout.image_grid_view, list);
-        gridView.setAdapter(adapter);
+        init();
 
         // get data from SQLite
-        Cursor cursor = db.getData("SELECT * FROM DOWNLOADS"); // doesn't work if clicked without downloading an image first. works fine after that initial download
+        Cursor cursor = db.getData("SELECT * FROM " + TABLE_NAME);
         list.clear();
         while(cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -38,6 +36,14 @@ public class ViewList extends AppCompatActivity {
 
             list.add(new DownloadedImage(id, title, image));
         }
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged(); // update grid
+    }
+
+    private void init() {
+        db = ImageDB.getInstance(this);
+        gridView = findViewById(R.id.grid_view);
+        list = new ArrayList<>();
+        adapter = new ImageListAdapter(this, R.layout.image_grid_view, list);
+        gridView.setAdapter(adapter);
     }
 }

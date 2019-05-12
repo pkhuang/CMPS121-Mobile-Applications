@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * A custom adapter for a grid. Grid is a bit wonky with my S7, test on emulator for other phones
+ * A custom adapter for a grid.
  */
 public class ImageListAdapter extends BaseAdapter {
 

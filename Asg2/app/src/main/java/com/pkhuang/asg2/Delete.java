@@ -19,7 +19,6 @@ public class Delete extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
-        db = ImageDB.getInstance(this);
 
         init();
 
@@ -33,6 +32,7 @@ public class Delete extends AppCompatActivity {
                 int id_to_delete = Integer.parseInt(id_string);
                 String title_to_delete = deleteTitle.getText().toString().trim();
 
+                // delete data from db
                 db.deleteData(id_to_delete, title_to_delete);
 
                 // reset EditText fields
@@ -46,9 +46,8 @@ public class Delete extends AppCompatActivity {
         });
     }
 
-
-
     private void init() {
+        db = ImageDB.getInstance(this);
         deleteID = findViewById(R.id.deleteID);
         deleteTitle = findViewById(R.id.deleteTitle);
         btn_delete = findViewById(R.id.btn_delete);
