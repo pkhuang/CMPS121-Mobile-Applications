@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Asg3</string>
+    <string name="init_time">30</string>
     <string name="state_arming">seconds before motion detection activation.</string>
     <string name="state_active">Motion detection active.</string>
     <string name="state_triggered">The phone was moved!</string>

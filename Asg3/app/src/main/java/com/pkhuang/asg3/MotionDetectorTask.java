@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
-import java.util.Date;
-import java.util.Random;
-
 /**
  * A task that determines if the phone has been moved or not.
  * Implements Runnable to run this on a background thread.
@@ -18,11 +15,7 @@ public class MotionDetectorTask implements Runnable {
 
     ResultCallback resultCallback;
 
-    // Fake variables to pretend we do something.
-    private String s = "";
-    private int i = 0;
-
-    final Object m = new Object();
+    final Object myLock = new Object();
 
     public MotionDetectorTask(Context context) {
         this.context = context;
@@ -35,7 +28,7 @@ public class MotionDetectorTask implements Runnable {
     @Override
     public void run() {
         running = true;
-        int countdown = 5; // change this back to 30 later
+        int countdown = 30;
         while (running) {
             // sleep one second
             try {
@@ -44,9 +37,8 @@ public class MotionDetectorTask implements Runnable {
                 e.getLocalizedMessage();
             }
             // count down from 30 seconds
-            if (i < 5) {
+            if (countdown > 0) {
                 countdown--;
-                i++;
             }
             // sends it to the UI thread in MainActivity (if MainActivity is running).
             notifyResultCallback(countdown);
@@ -67,20 +59,7 @@ public class MotionDetectorTask implements Runnable {
     }
 
     /**
-     * Reset the service to initial states
-     */
-    public void doSomething(int ii, String ss) {
-        // An integer can be always changed atomically.
-        i = ii;
-        // For a string, we need to synchronize.
-        synchronized (m) {
-            s = ss;
-        }
-    }
-
-    /**
      * Call this function to return the integer i to the activity.
-     * @param i
      */
     private void notifyResultCallback(int i) {
         ServiceResult result = new ServiceResult();

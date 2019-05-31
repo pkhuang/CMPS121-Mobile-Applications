@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity
 
     public static TextView text_timer;
     public static TextView text_state;
-    private Button btn_clear;
-    private Button btn_exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +77,34 @@ public class MainActivity extends AppCompatActivity
     };
 
     /**
-     * Resets service.
-     * 1) Activity calls the service
-     * 2) Service sets init_time to the current time and first_accel_time to null
+     * Resets service on button click.
+     * 1) Activity unbinds and stops the service.
+     * 2) Activity starts and binds the service.
+     * 3) Activity resets text fields.
      */
     void clickClear(View v) {
-        myService.doSomething(5, "hello");
+        if (serviceBound) {
+            // unbind and stop service
+            unbindService(serviceConnection);
+            serviceBound = false;
+            stopService(new Intent(this, MotionDetectorService.class));
+
+            // start new service and bind again
+            Intent intent = new Intent(this, MotionDetectorService.class);
+            bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+            serviceBound = true;
+
+            // reset the UI
+            text_timer.setText(getResources().getString(R.string.init_time));
+            text_timer.setVisibility(View.VISIBLE);
+            text_state.setText(getResources().getString(R.string.state_arming));
+        }
     }
 
     /**
-     * Exits app.
-     * 1) Activity unbinds and stop from process, same as onPause()
-     * 2) Remove the notification too
+     * Exits app on button click.
+     * 1) Activity unbinds and stop the service
+     * 2) Remove the notification
      */
     void clickExit(View v) {
         if (serviceBound) {
@@ -98,8 +112,7 @@ public class MainActivity extends AppCompatActivity
             serviceBound = false;
 
             if (true) {
-                Intent intent = new Intent(this, MotionDetectorService.class);
-                stopService(intent);
+                stopService(new Intent(this, MotionDetectorService.class));
             }
         }
         finish();
@@ -114,8 +127,7 @@ public class MainActivity extends AppCompatActivity
             // if we like, stops the service.
             if (true) {
                 Log.i(LOG_TAG, "Stopping.");
-                Intent intent = new Intent(this, MotionDetectorService.class);
-                stopService(intent);
+                stopService(new Intent(this, MotionDetectorService.class));
                 Log.i(LOG_TAG, "Stopped.");
             }
         }
@@ -146,22 +158,14 @@ public class MainActivity extends AppCompatActivity
             if (message.what == DISPLAY_NUMBER) {
                 // gets the result
                 ServiceResult result = (ServiceResult) message.obj;
-                // Displays it
+                // display the result in the timer text field
                 if (result != null) {
                     Log.i(LOG_TAG, "Displaying: " + result.intValue);
                     text_timer.setText(Integer.toString(result.intValue));
-                    // tell the worker that the bitmap is ready to be reused
                 } else {
                     Log.e(LOG_TAG, "Error: received empty message!");
                 }
             }
-//            // change state text after timer hits 0
-//            if (Integer.parseInt((String) text_timer.getText()) == 0)
-//            {
-//                text_timer.setVisibility(View.INVISIBLE);
-//                text_state.setText(getResources().getString(R.string.state_active));
-//            }
-
             return true;
         }
     }
@@ -171,8 +175,6 @@ public class MainActivity extends AppCompatActivity
         serviceBound = false;
         text_timer = findViewById(R.id.text_timer);
         text_state = findViewById(R.id.text_state);
-        btn_clear = findViewById(R.id.btn_clear);
-        btn_exit = findViewById(R.id.btn_exit);
 
         // prevents the screen from dimming and going to sleep
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

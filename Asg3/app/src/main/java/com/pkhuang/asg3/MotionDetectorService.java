@@ -93,10 +93,14 @@ public class MotionDetectorService extends Service implements SensorEventListene
         if (!myThread.isAlive()) {
             myThread.start();
         }
+
         // we want this service to continue running until it is explicitly stopped, so return sticky
         return START_STICKY;
     }
 
+    /**
+     * changes state text on acceleration of phone
+     */
     @Override
     public void onSensorChanged(SensorEvent event) {
         float x = event.values[0];
@@ -129,7 +133,7 @@ public class MotionDetectorService extends Service implements SensorEventListene
     public boolean didItMove() {
         boolean moved = false;
         long time_elapsed = first_accel_time - init_time;
-        if(first_accel_time != 0 && (time_elapsed > 5000)) {
+        if(first_accel_time != 0 && (time_elapsed > 30000)) { // remember to change to 30000
             moved = true;
         }
         return moved;
@@ -143,13 +147,6 @@ public class MotionDetectorService extends Service implements SensorEventListene
         // Stops the motion detector.
         myTask.stopProcessing();
         Log.i(LOG_TAG, "Stopped.");
-    }
-
-    /**
-     * Resets the service to initial states.
-     */
-    public void doSomething (int i, String s) {
-        myTask.doSomething(i, s);
     }
 
     /**
@@ -179,7 +176,6 @@ public class MotionDetectorService extends Service implements SensorEventListene
         builder.setContentIntent(resultPendingIntent);
 
         notificationManager.notify(id, builder.build());
-
     }
 
     public void updateResultCallback(MotionDetectorTask.ResultCallback resultCallback) {
@@ -192,7 +188,7 @@ public class MotionDetectorService extends Service implements SensorEventListene
         myThread = new Thread(myTask);
         myThread.start();
 
-        // sets vars
+        // sets time vars
         init_time = System.currentTimeMillis();
         first_accel_time = 0;
     }
