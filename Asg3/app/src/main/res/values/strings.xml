@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Asg3</string>
+    <string name="state_arming">seconds before motion detection activation.</string>
+    <string name="state_active">Motion detection active.</string>
+    <string name="state_triggered">The phone was moved!</string>
+    <string name="btn_clear">CLEAR</string>
+    <string name="btn_exit">EXIT</string>
 </resources>
