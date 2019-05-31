@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity
     private boolean serviceBound;
     private MotionDetectorService myService;
 
-    private TextView text_timer;
-    private TextView text_state;
+    public static TextView text_timer;
+    public static TextView text_state;
     private Button btn_clear;
     private Button btn_exit;
 
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * Exits app.
      * 1) Activity unbinds and stop from process, same as onPause()
+     * 2) Remove the notification too
      */
     void clickExit(View v) {
         if (serviceBound) {
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity
             Log.i("MotionDetectorService", "Unbinding");
             unbindService(serviceConnection);
             serviceBound = false;
-            // If we like, stops the service.
+            // if we like, stops the service.
             if (true) {
                 Log.i(LOG_TAG, "Stopping.");
                 Intent intent = new Intent(this, MotionDetectorService.class);
@@ -150,18 +151,17 @@ public class MainActivity extends AppCompatActivity
                     Log.i(LOG_TAG, "Displaying: " + result.intValue);
                     text_timer.setText(Integer.toString(result.intValue));
                     // tell the worker that the bitmap is ready to be reused
-
-                    // set new text after timer hits 0; optional really
-//                    int cur_time = Integer.parseInt((String) text_timer.getText());
-                    if (Integer.parseInt((String) text_timer.getText()) == 0)
-                    {
-                        text_timer.setVisibility(View.INVISIBLE);
-                        text_state.setText(getResources().getString(R.string.state_active));
-                    }
                 } else {
                     Log.e(LOG_TAG, "Error: received empty message!");
                 }
             }
+//            // change state text after timer hits 0
+//            if (Integer.parseInt((String) text_timer.getText()) == 0)
+//            {
+//                text_timer.setVisibility(View.INVISIBLE);
+//                text_state.setText(getResources().getString(R.string.state_active));
+//            }
+
             return true;
         }
     }

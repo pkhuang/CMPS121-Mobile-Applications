@@ -2,6 +2,8 @@ package com.pkhuang.asg3;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+
 import java.util.Date;
 import java.util.Random;
 
@@ -28,26 +30,34 @@ public class MotionDetectorTask implements Runnable {
     }
 
     /**
-     *
+     * Ticks down the visual timer.
      */
     @Override
     public void run() {
         running = true;
-        int countdown = 30;
+        int countdown = 5; // change this back to 30 later
         while (running) {
-            // Sleep a tiny bit.
+            // sleep one second
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
                 e.getLocalizedMessage();
             }
             // count down from 30 seconds
-            if (i < 30) {
+            if (i < 5) {
                 countdown--;
                 i++;
             }
             // sends it to the UI thread in MainActivity (if MainActivity is running).
             notifyResultCallback(countdown);
+
+            // change state text and stop processing after timer hits 0
+            if (countdown == 0)
+            {
+                MainActivity.text_timer.setVisibility(View.INVISIBLE);
+                MainActivity.text_state.setText(context.getResources().getString(R.string.state_active));
+                stopProcessing();
+            }
         }
     }
 
@@ -57,7 +67,7 @@ public class MotionDetectorTask implements Runnable {
     }
 
     /**
-     *
+     * Reset the service to initial states
      */
     public void doSomething(int ii, String ss) {
         // An integer can be always changed atomically.
