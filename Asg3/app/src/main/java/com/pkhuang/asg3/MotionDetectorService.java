@@ -31,6 +31,10 @@ public class MotionDetectorService extends Service {
     private Thread myThread;
     private MotionDetectorTask myTask;
 
+    // vars for calculating time
+    private Date init_time; // start time of the app
+    private Date first_accel_time; // the time of the first acceleration event
+
     // Binder class
     public class MyBinder extends Binder {
         MotionDetectorService getService() {
@@ -94,6 +98,16 @@ public class MotionDetectorService extends Service {
         myTask.doSomething(i, s);
     }
 
+//    public boolean didItMove() {
+//        Date d = new Date();
+//        boolean moved = false;
+//        synchronized(myLock) {
+//            if(first_accel_time != null && d - first_accel_time > 30)
+//            moved = true;
+//        }
+//        return moved;
+//    }
+
     /**
      * Show a notification while this service is running.
      */
@@ -109,7 +123,7 @@ public class MotionDetectorService extends Service {
         }
         Notification.Builder builder = new Notification.Builder(this)
                 .setContentTitle("Service Message")
-                .setContentText("You've received new messages!")
+                .setContentText("Motion Detection Running.")
                 .setSmallIcon(R.drawable.ic_stat_name).setChannelId(CHANNEL_ID);
 
         Intent resultIntent = new Intent(this, MainActivity.class);

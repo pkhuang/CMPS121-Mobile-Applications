@@ -16,10 +16,6 @@ public class MotionDetectorTask implements Runnable {
 
     ResultCallback resultCallback;
 
-    // vars for calculating time
-//    private Date init_time; // start time of the app
-//    private Date first_accel_time; // the time of the first acceleration event
-
     // Fake variables to pretend we do something.
     private String s = "";
     private int i = 0;
@@ -32,13 +28,12 @@ public class MotionDetectorTask implements Runnable {
     }
 
     /**
-     * Calculates change in time after motion is detected.
-     * replace starter code
+     *
      */
     @Override
     public void run() {
         running = true;
-        Random rand = new Random();
+        int countdown = 30;
         while (running) {
             // Sleep a tiny bit.
             try {
@@ -46,19 +41,13 @@ public class MotionDetectorTask implements Runnable {
             } catch (Exception e) {
                 e.getLocalizedMessage();
             }
-            // Generate a random number.
-            int r = rand.nextInt(100);
-            // sends it to the UI thread in MainActivity (if MainActivity is running).
-            Log.i(LOG_TAG, "Sending random number: " + r);
-            notifyResultCallback(r);
-            if (i > 0) {
-                Log.d("Service Counting", i + " ");
-                i--;
-                if (i < 0) {
-                    // Do I ever get here?
-                }
+            // count down from 30 seconds
+            if (i < 30) {
+                countdown--;
+                i++;
             }
-
+            // sends it to the UI thread in MainActivity (if MainActivity is running).
+            notifyResultCallback(countdown);
         }
     }
 

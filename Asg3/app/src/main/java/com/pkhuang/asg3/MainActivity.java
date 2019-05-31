@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     private MotionDetectorService myService;
 
     private TextView text_timer;
+    private TextView text_state;
     private Button btn_clear;
     private Button btn_exit;
 
@@ -147,9 +148,16 @@ public class MainActivity extends AppCompatActivity
                 // Displays it
                 if (result != null) {
                     Log.i(LOG_TAG, "Displaying: " + result.intValue);
-                    TextView tv = (TextView) findViewById(R.id.text_timer);
-                    tv.setText(Integer.toString(result.intValue));
+                    text_timer.setText(Integer.toString(result.intValue));
                     // tell the worker that the bitmap is ready to be reused
+
+                    // set new text after timer hits 0; optional really
+//                    int cur_time = Integer.parseInt((String) text_timer.getText());
+                    if (Integer.parseInt((String) text_timer.getText()) == 0)
+                    {
+                        text_timer.setVisibility(View.INVISIBLE);
+                        text_state.setText(getResources().getString(R.string.state_active));
+                    }
                 } else {
                     Log.e(LOG_TAG, "Error: received empty message!");
                 }
@@ -162,6 +170,7 @@ public class MainActivity extends AppCompatActivity
         mUiHandler = new Handler(getMainLooper(), new UiCallback());
         serviceBound = false;
         text_timer = findViewById(R.id.text_timer);
+        text_state = findViewById(R.id.text_state);
         btn_clear = findViewById(R.id.btn_clear);
         btn_exit = findViewById(R.id.btn_exit);
 
